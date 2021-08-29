@@ -73,8 +73,7 @@ class PSO:
         g_best_pos = self.g_best["pos"]
         print("[INFO] Stopping fitting...")
         print(f"[INFO] G_BEST: {g_best_value} at {g_best_pos}\n")
-
-
+        print(f"[INFO] Global optima {self.locations}")
     def particles_dynamics(self):
 
         for particle in self.particles:
@@ -116,5 +115,9 @@ class PSO:
         return new_pos
 
 if __name__ == '__main__':
-    pso = PSO(n_particles=200, iterations=1000, no_improvement=100, space_h=20, space_w=20, w=0.5, c1=0.8, c2=0.9, custom_space="custom_space.png")
+
+    # Para usar um random space -> custom_space=""
+    # Usando c1 e c2 indicados no paper do Charged-PSO
+
+    pso = PSO(n_particles=200, iterations=1000, no_improvement=50, space_h=150, space_w=150, w=0.5, c1=1.494, c2=1.494, custom_space="custom_space.png")
     pso.run()
